@@ -2,6 +2,7 @@ package com.learn.linkedlist.basic;
 
 import java.util.Iterator;
 import java.util.Objects;
+import java.util.Random;
 
 public class UnidirectionalLinkedList<T> implements Iterable<T> {
 
@@ -130,9 +131,7 @@ public class UnidirectionalLinkedList<T> implements Iterable<T> {
   }
 
   public T get(int index) throws IndexOutOfBoundsException {
-    if (index > size - 1) {
-      throw new IndexOutOfBoundsException("index out of bounds exception");
-    }
+    checkIndexBounds(index);
 
     int findIndex = 0;
     Node<T> cur = head;
@@ -141,6 +140,24 @@ public class UnidirectionalLinkedList<T> implements Iterable<T> {
       findIndex++;
     }
     return cur.value;
+  }
+
+  private Node<T> getNode(int index) throws IndexOutOfBoundsException {
+    checkIndexBounds(index);
+
+    int findIndex = 0;
+    Node<T> cur = head;
+    while (index > findIndex) {
+      cur = cur.next;
+      findIndex++;
+    }
+    return cur;
+  }
+
+  private void checkIndexBounds(int index) {
+    if (index > size - 1) {
+      throw new IndexOutOfBoundsException("index out of bounds exception");
+    }
   }
 
   public int indexOf(Object o) {
@@ -224,5 +241,30 @@ public class UnidirectionalLinkedList<T> implements Iterable<T> {
     }
 
     return (T) slow.value;
+  }
+
+  public boolean hasCircle() {
+    Node fast = head;
+    Node slow = head;
+
+    if (head == null || head.next == null) {
+      return false;
+    }
+
+    while (fast.next != null && fast.next.next != null) {
+      fast = fast.next.next;
+      slow = slow.next;
+
+      if (fast == slow) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  public void addCircle() {
+    Random random = new Random();
+    last.next = getNode(random.nextInt(size));
   }
 }

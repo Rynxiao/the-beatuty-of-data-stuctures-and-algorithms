@@ -180,4 +180,23 @@ class UnidirectionalLinkedListTest {
 
     assertEquals(emptyList2.getMiddle(), "four");
   }
+
+  @Test
+  void should_has_no_circle_given_a_list_without_circle() {
+    emptyList2.add("one");
+    emptyList2.add("two");
+    emptyList2.add("three");
+    emptyList2.add("four");
+    assertFalse(emptyList2.hasCircle());
+  }
+
+  @Test
+  void should_has_no_circle_given_a_list_with_circle() {
+    emptyList2.add("one");
+    emptyList2.add("two");
+    emptyList2.add("three");
+    emptyList2.add("four");
+    emptyList2.addCircle();
+    assertTrue(emptyList2.hasCircle());
+  }
 }
