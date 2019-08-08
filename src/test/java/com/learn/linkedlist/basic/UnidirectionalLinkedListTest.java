@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -141,5 +142,42 @@ class UnidirectionalLinkedListTest {
     assertTrue(emptyList2.addFirst("three"));
     assertEquals(emptyList2.size(), 3);
     assertEquals(emptyList2.get(0), "three");
+  }
+
+  @Test
+  void should_get_middle_value_given_empty_list() {
+    assertNull(emptyList2.getMiddle());
+  }
+
+  @Test
+  void should_get_middle_value_given_one_element_list() {
+    emptyList2.add("one");
+
+    assertEquals(emptyList2.getMiddle(), "one");
+  }
+
+  @Test
+  void should_get_middle_value_given_list() {
+    emptyList2.add("one");
+    emptyList2.add("two");
+    emptyList2.add("three");
+    emptyList2.add("four");
+    emptyList2.add("five");
+
+    assertEquals(emptyList2.getMiddle(), "three");
+  }
+
+  @Test
+  void should_get_middle_value_given_odd_list() {
+    emptyList2.add("one");
+    emptyList2.add("two");
+    emptyList2.add("three");
+    emptyList2.add("four");
+    emptyList2.add("five");
+    emptyList2.add("six");
+    emptyList2.add("seven");
+    emptyList2.add("eight");
+
+    assertEquals(emptyList2.getMiddle(), "four");
   }
 }

@@ -205,4 +205,24 @@ public class UnidirectionalLinkedList<T> implements Iterable<T> {
     size++;
     return true;
   }
+
+  public T getMiddle() {
+    Node fast = head;
+    Node slow = head;
+
+    if (head == null) {
+      return null;
+    }
+
+    if (head.next == null) {
+      return head.value;
+    }
+
+    while (fast.next != null && fast.next.next != null) {
+      fast = fast.next.next;
+      slow = slow.next;
+    }
+
+    return (T) slow.value;
+  }
 }
