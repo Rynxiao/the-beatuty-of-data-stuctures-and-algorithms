@@ -1,6 +1,6 @@
 package com.learn.linkedlist.basic;
 
-class Node<T> {
+public class Node<T> {
   public T value;
   public Node<T> next;
 

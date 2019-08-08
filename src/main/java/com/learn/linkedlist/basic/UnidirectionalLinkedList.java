@@ -17,6 +17,11 @@ public class UnidirectionalLinkedList<T> implements Iterable<T> {
     return size == 0;
   }
 
+  // export only for test palindrome
+  protected Node getHead() {
+    return head;
+  }
+
   public boolean contains(T o) {
     boolean found = false;
     Node cur = head;
