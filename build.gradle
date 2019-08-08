@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'com.learn'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.2.0'
+    testCompile 'org.mockito:mockito-junit-jupiter:2.19.0'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+}
