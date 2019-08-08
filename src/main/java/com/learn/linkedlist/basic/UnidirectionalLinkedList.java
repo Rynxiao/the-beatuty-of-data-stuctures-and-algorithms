@@ -22,6 +22,11 @@ public class UnidirectionalLinkedList<T> implements Iterable<T> {
     return head;
   }
 
+  protected void setNode(Node<T> head, Node<T> last) {
+    this.head = head;
+    this.last = last;
+  }
+
   public boolean contains(T o) {
     boolean found = false;
     Node cur = head;
