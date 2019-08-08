@@ -14,7 +14,7 @@ class LRUCacheTest {
   }
 
   @Test
-  void getNode() {
+  void should_use_last_recent_used_strategy_to_cache_data() {
     lruCache.putNode(1, 1);
     lruCache.putNode(10, 15);
     lruCache.putNode(15, 10);
@@ -29,9 +29,5 @@ class LRUCacheTest {
     assertEquals(lruCache.getNode(10), 16);
     assertEquals(lruCache.getNode(15), -1);
     assertEquals(lruCache.getNode(12), 26);
-
   }
-
-  @Test
-  void putNode() {}
 }
