@@ -20,7 +20,10 @@ public class SequenceStack<T> {
   }
 
   public T[] toArray() {
-    return items;
+    //noinspection unchecked
+    T[] list = (T[]) new Object[count];
+    System.arraycopy(items, 0, list, 0, count);
+    return list;
   }
 
   public boolean push(T item) {
