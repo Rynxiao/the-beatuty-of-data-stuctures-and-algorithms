@@ -13,11 +13,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class UnidirectionalLinkedListTest {
   private UnidirectionalLinkedList<String> emptyList;
   private UnidirectionalLinkedList<String> emptyList2;
+  private UnidirectionalLinkedList<String> emptyList3;
 
   @BeforeEach
   void setUp() {
     emptyList = new UnidirectionalLinkedList<>();
     emptyList2 = new UnidirectionalLinkedList<>();
+    emptyList3 = new UnidirectionalLinkedList<>();
   }
 
   @Test
@@ -198,5 +200,53 @@ class UnidirectionalLinkedListTest {
     emptyList2.add("four");
     emptyList2.addCircle();
     assertTrue(emptyList2.hasCircle());
+  }
+
+  @Test
+  void should_sort_merge_successfully_given_empty_list_and_a_list_with_value() {
+    emptyList3.add("1");
+    emptyList3.add("2");
+    emptyList2.merge(emptyList3);
+    assertArrayEquals(emptyList2.toArray(), new String[] {"1", "2"});
+  }
+
+  @Test
+  void should_sort_merge_successfully_given_merge_empty_list_and_a_origin_list_with_value() {
+    emptyList2.add("1");
+    emptyList2.add("2");
+    emptyList2.merge(emptyList3);
+    assertArrayEquals(emptyList2.toArray(), new String[] {"1", "2"});
+  }
+
+  @Test
+  void should_sort_merge_successfully_given_empty_list_with_value_and_a_origin_list_with_value() {
+    emptyList2.add("1");
+    emptyList2.add("2");
+    emptyList2.add("5");
+    emptyList2.add("6");
+    emptyList2.add("9");
+    emptyList3.add("3");
+    emptyList3.add("4");
+    emptyList3.add("7");
+    emptyList3.add("8");
+    emptyList2.merge(emptyList3);
+    assertArrayEquals(
+        emptyList2.toArray(), new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
+  }
+
+  @Test
+  void should_sort_merge_successfully_given_a_empty_list_with_value_and_a_origin_list_with_value() {
+    emptyList2.add("3");
+    emptyList2.add("4");
+    emptyList2.add("7");
+    emptyList2.add("8");
+    emptyList3.add("1");
+    emptyList3.add("2");
+    emptyList3.add("5");
+    emptyList3.add("6");
+    emptyList3.add("9");
+    emptyList2.merge(emptyList3);
+    assertArrayEquals(
+        emptyList2.toArray(), new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"});
   }
 }

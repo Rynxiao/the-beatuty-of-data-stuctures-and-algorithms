@@ -18,7 +18,9 @@ public class UnidirectionalLinkedList<T> implements Iterable<T> {
     return size == 0;
   }
 
-  // export only for test palindrome
+  // ===============================================
+  // === export only for test palindrome/reverse ===
+  // ===============================================
   protected Node getHead() {
     return head;
   }
@@ -27,6 +29,9 @@ public class UnidirectionalLinkedList<T> implements Iterable<T> {
     this.head = head;
     this.last = last;
   }
+  // ===============================================
+  // === export only for test palindrome/reverse ===
+  // ===============================================
 
   public boolean contains(T o) {
     boolean found = false;
@@ -266,5 +271,64 @@ public class UnidirectionalLinkedList<T> implements Iterable<T> {
   public void addCircle() {
     Random random = new Random();
     last.next = getNode(random.nextInt(size));
+  }
+
+  public boolean addAll(UnidirectionalLinkedList<T> list) {
+    for (T item : list) {
+      add(item);
+    }
+    return true;
+  }
+
+  public void merge(UnidirectionalLinkedList<T> list) {
+    Node<T> dummyHead = new Node<T>();
+    T[] ts = list.toArray();
+    int tSize = list.size();
+
+    int curCursor = 0;
+    int tCursor = 0;
+
+    if (head == null) {
+      addAll(list);
+      return;
+    }
+
+    if (tSize == 0) {
+      return;
+    }
+
+    Node<T> cur = head;
+    Node<T> newNode;
+    Node<T> cursorHead = dummyHead;
+    while (curCursor < size && tCursor < tSize) {
+      int curValue = Integer.parseInt(cur.value.toString());
+      int tValue = Integer.parseInt(ts[tCursor].toString());
+      if (curValue < tValue) {
+        newNode = new Node<T>(cur.value);
+        cur = cur.next;
+        curCursor++;
+      } else {
+        newNode = new Node<T>(ts[tCursor]);
+        tCursor++;
+      }
+
+      cursorHead.next = newNode;
+      cursorHead = newNode;
+    }
+
+    if (curCursor == size) {
+      for (int i = tCursor; i < tSize; i++) {
+        Node<T> leftNewNode = new Node<T>(ts[i]);
+        cursorHead.next = leftNewNode;
+        cursorHead = leftNewNode;
+      }
+    }
+
+    if (tCursor == tSize) {
+      cursorHead.next = getNode(curCursor);
+    }
+
+    head = dummyHead.next;
+    size = size + tSize;
   }
 }
