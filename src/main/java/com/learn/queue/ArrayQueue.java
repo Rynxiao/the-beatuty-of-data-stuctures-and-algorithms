@@ -11,7 +11,7 @@ public class ArrayQueue {
     n = capacity;
   }
 
-  public boolean enqueue(String item) {
+  public synchronized boolean enqueue(String item) {
     if (tail == n) {
       // tail ==n && head==0，表示整个队列都占满了
       if (head == 0) {
@@ -29,12 +29,24 @@ public class ArrayQueue {
     return true;
   }
 
-  public String dequeue() {
+  public synchronized String dequeue() {
     if (head == tail) {
       return null;
     }
     String ret = items[head];
     head++;
     return ret;
+  }
+
+  public boolean isEmpty() {
+    return head == tail;
+  }
+
+  public boolean isFull() {
+    return head == 0 && tail == n;
+  }
+
+  public int left() {
+    return tail - head;
   }
 }
