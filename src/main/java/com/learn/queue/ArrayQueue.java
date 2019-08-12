@@ -13,7 +13,16 @@ public class ArrayQueue {
 
   public boolean enqueue(String item) {
     if (tail == n) {
-      return false;
+      // tail ==n && head==0，表示整个队列都占满了
+      if (head == 0) {
+        return false;
+      }
+
+      for (int i = head; i < tail; i++) {
+        items[i - head] = items[i];
+      }
+      tail -= head;
+      head = 0;
     }
     items[tail] = item;
     tail++;

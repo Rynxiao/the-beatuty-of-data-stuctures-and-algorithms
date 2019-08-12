@@ -40,4 +40,11 @@ class ArrayQueueTest {
   void should_dequeue_failed_given_empty_queue_when_dequeue() {
     assertNull(arrayQueue.dequeue());
   }
+
+  @Test
+  void should_enqueue_successfully_given_full_queue_when_dequeue_twice_and_enqueue() {
+    fullArrayQueue.dequeue();
+    fullArrayQueue.dequeue();
+    assertTrue(fullArrayQueue.enqueue("4"));
+  }
 }
