@@ -36,4 +36,11 @@ class SortUtilsTest {
     sortUtils.sort(arr);
     assertArrayEquals(arr, sortedArr);
   }
+
+  @Test
+  void should_sort_successfully_given_arr_when_use_merge_sort_way() {
+    sortUtils = new MergeSort();
+    sortUtils.sort(arr);
+    assertArrayEquals(arr, sortedArr);
+  }
 }
