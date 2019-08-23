@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SortUtilsTest {
   private SortUtils sortUtils;
@@ -49,5 +50,11 @@ class SortUtilsTest {
     sortUtils = new QuickSort();
     sortUtils.sort(arr);
     assertArrayEquals(arr, sortedArr);
+  }
+
+  @Test
+  void should_get_successfully_given_arr_when_use_quick_sort_way() {
+    QuickSort quickSort = new QuickSort();
+    assertEquals(quickSort.getMaxOf(arr, 3), 3);
   }
 }

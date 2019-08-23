@@ -9,6 +9,25 @@ public class QuickSort implements SortUtils {
     }
   }
 
+  public int getMaxOf(int[] arr, int k) {
+    int len = arr.length;
+    if (len > 1) {
+      return get(arr, 0, len - 1, k);
+    }
+    return -1;
+  }
+
+  public int get(int[]arr, int start, int end, int k) {
+    int p = partition(arr, start, end);
+    if (p + 1 == k) {
+      return arr[p];
+    } else if (p + 1 < k) {
+      return get(arr, p + 1, end, k);
+    } else {
+      return get(arr, start, p - 1, k);
+    }
+  }
+
   private void quickSort(int[] arr, int start, int end) {
     if (start < end) {
       int q = partition(arr, start, end);
