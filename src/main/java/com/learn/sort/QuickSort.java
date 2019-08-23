@@ -17,7 +17,7 @@ public class QuickSort implements SortUtils {
     return -1;
   }
 
-  public int get(int[]arr, int start, int end, int k) {
+  private int get(int[] arr, int start, int end, int k) {
     int p = partition(arr, start, end);
     if (p + 1 == k) {
       return arr[p];
