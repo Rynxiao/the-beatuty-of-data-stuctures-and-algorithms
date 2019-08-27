@@ -65,4 +65,12 @@ class SortUtilsTest {
     bucketSort.sort(arr);
     assertArrayEquals(arr, new int[] {5, 7, 8, 10, 11, 22, 26, 27, 29, 30, 40, 41, 42, 43, 45});
   }
+
+  @Test
+  void should_get_successfully_given_arr_when_use_counting_sort_way() {
+    int[] arr = new int[] {22, 5, 11, 41, 45, 26, 29, 10, 7, 8, 30, 27, 42, 43, 40};
+    CountingSort countingSort = new CountingSort();
+    countingSort.sort(arr);
+    assertArrayEquals(arr, new int[] {5, 7, 8, 10, 11, 22, 26, 27, 29, 30, 40, 41, 42, 43, 45});
+  }
 }
