@@ -17,6 +17,22 @@ public class BinarySearchTree {
     return null;
   }
 
+  public Node findMax() {
+    Node p = tree;
+    while (p != null && p.right != null) {
+      p = p.right;
+    }
+    return p;
+  }
+
+  public Node findMin() {
+    Node p = tree;
+    while (p != null && p.left != null) {
+      p = p.left;
+    }
+    return p;
+  }
+
   public void insert(int data) {
     if (tree == null) {
       tree = new Node(data);

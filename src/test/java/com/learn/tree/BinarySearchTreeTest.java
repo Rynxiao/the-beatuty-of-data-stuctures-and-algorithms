@@ -45,4 +45,14 @@ class BinarySearchTreeTest {
     binarySearchTree.delete(18);
     assertNull(binarySearchTree.find(18));
   }
+
+  @Test
+  void should_find_max_data_given_a_binary_search_tree() {
+    assertEquals(66, binarySearchTree.findMax().getData());
+  }
+
+  @Test
+  void should_find_min_data_given_a_binary_search_tree() {
+    assertEquals(13, binarySearchTree.findMin().getData());
+  }
 }
