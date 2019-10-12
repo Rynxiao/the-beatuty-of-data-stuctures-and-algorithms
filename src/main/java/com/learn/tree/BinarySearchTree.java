@@ -103,6 +103,66 @@ public class BinarySearchTree {
     }
   }
 
+  public int getDeep() {
+    return deep(tree);
+  }
+
+  private int deep(Node root) {
+    if (root == null) {
+      return 0;
+    }
+
+    int lDeep = deep(root.left);
+    int rDeep = deep(root.right);
+    if (lDeep > rDeep) {
+      return lDeep + 1;
+    } else {
+      return rDeep + 1;
+    }
+  }
+
+  public void preOrderImplement() {
+    preOrder(tree);
+  }
+
+  public void inOrderImplement() {
+    inOrder(tree);
+  }
+
+  public void postOrderImplement() {
+    postOrder(tree);
+  }
+
+  // 中序遍历是指，对于树中的任意节点来说，先打印它的左子树，然后再打印它本身，最后打印它的右子树
+  private void inOrder(Node root) {
+    if (root == null) {
+      return;
+    }
+    inOrder(root.left);
+    System.out.println(root.data);
+    inOrder(root.right);
+  }
+
+  // 前序遍历是指，对于树中的任意节点来说，先打印这个节点，然后再打印它的左子树，最后打印它的右子树
+  private void preOrder(Node root) {
+    if (root == null) {
+      return;
+    }
+    System.out.println(root.data);
+    preOrder(root.left);
+    preOrder(root.right);
+  }
+
+  // 后序遍历是指，对于树中的任意节点来说，先打印它的左子树，然后再打印它的右子树，最后打印这个节点本身
+  private void postOrder(Node root) {
+    if (root == null) {
+      return;
+    }
+    postOrder(root.left);
+    postOrder(root.right);
+    System.out.println(root.data);
+  }
+
   public static class Node {
     private int data;
     private Node left;

@@ -55,4 +55,16 @@ class BinarySearchTreeTest {
   void should_find_min_data_given_a_binary_search_tree() {
     assertEquals(13, binarySearchTree.findMin().getData());
   }
+
+  @Test
+  void should_find_the_deep_of_tree_given_a_binary_search_tree() {
+    assertEquals(5, binarySearchTree.getDeep());
+  }
+
+  @Test
+  void order() {
+//    binarySearchTree.preOrderImplement();
+    binarySearchTree.inOrderImplement();
+//    binarySearchTree.postOrderImplement();
+  }
 }
