@@ -1,5 +1,7 @@
 package com.learn.tree;
 
+import java.util.LinkedList;
+
 public class BinarySearchTree {
   private Node tree;
 
@@ -133,6 +135,10 @@ public class BinarySearchTree {
     postOrder(tree);
   }
 
+  public void levelOrderImplement() {
+    levelOrder(tree);
+  }
+
   // 中序遍历是指，对于树中的任意节点来说，先打印它的左子树，然后再打印它本身，最后打印它的右子树
   private void inOrder(Node root) {
     if (root == null) {
@@ -161,6 +167,27 @@ public class BinarySearchTree {
     postOrder(root.left);
     postOrder(root.right);
     System.out.println(root.data);
+  }
+
+  // 层遍历
+  private void levelOrder(Node root) {
+    if (root == null) {
+      return;
+    }
+    LinkedList<Node> queue = new LinkedList<>();
+    queue.add(root);
+
+    while (!queue.isEmpty()) {
+      Node current = queue.poll();
+      System.out.println(current.data);
+      if (current.left != null) {
+        queue.add(current.left);
+      }
+
+      if (current.right != null) {
+        queue.add(current.right);
+      }
+    }
   }
 
   public static class Node {

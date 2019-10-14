@@ -64,7 +64,8 @@ class BinarySearchTreeTest {
   @Test
   void order() {
 //    binarySearchTree.preOrderImplement();
-    binarySearchTree.inOrderImplement();
+//    binarySearchTree.inOrderImplement();
 //    binarySearchTree.postOrderImplement();
+    binarySearchTree.levelOrderImplement();
   }
 }
